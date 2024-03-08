@@ -82,6 +82,12 @@ app.post("/fitness", async (req , res) => {
     return res.send(fitness)
 });
 
+app.get("/fitness/:id" , async (req, res) => {
+    const fitness = Fitness.findById(req.params.id);
+
+    return res.send(fitness);
+})
+
 
 
 app.get("/moda", async (req , res) => {
@@ -114,6 +120,12 @@ app.post("/moda", async (req , res) => {
     await moda.save()
     return res.send(moda)
 });
+
+app.get("/moda/:id" , async (req, res) => {
+    const moda = Moda.findById(req.params.id);
+
+    return res.send(moda);
+})
 
 app.get("/tecnologia", async (req , res) => {
     const tecnologia = await Tecnologias.find();
@@ -151,6 +163,12 @@ app.post("/tecnologia", async (req , res) => {
     await tecnologia.save()
     return res.send(tecnologia)
 });
+
+app.get("/tecnologia/:id" , async (req, res) => {
+    const tecnologia = Tecnologias.findById(req.params.id);
+
+    return res.send(tecnologia);
+})
 
 
 app.post("/user", async (req , res) => {
