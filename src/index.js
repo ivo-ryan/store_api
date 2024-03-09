@@ -83,7 +83,7 @@ app.post("/fitness", async (req , res) => {
 });
 
 app.get("/fitness/:id" , async (req, res) => {
-    const fitness = Fitness.findById(req.params.id);
+    const fitness = await Fitness.findById(req.params.id);
 
     return res.send(fitness);
 })
@@ -122,7 +122,7 @@ app.post("/moda", async (req , res) => {
 });
 
 app.get("/moda/:id" , async (req, res) => {
-    const moda = Moda.findById(req.params.id);
+    const moda = await Moda.findById(req.params.id);
 
     return res.send(moda);
 })
@@ -165,7 +165,7 @@ app.post("/tecnologia", async (req , res) => {
 });
 
 app.get("/tecnologia/:id" , async (req, res) => {
-    const tecnologia = Tecnologias.findById(req.params.id);
+    const tecnologia = await Tecnologias.findById(req.params.id);
 
     return res.send(tecnologia);
 })
