@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 const port = process.env.PORT || 3000;
 
 const User = mongoose.model('User', {
-
+    user: String,
     email: String ,
     senha: String ,
     cart:[]
@@ -173,6 +173,7 @@ app.get("/tecnologia/:id" , async (req, res) => {
 
 app.post("/user", async (req , res) => {
         const user = new User({
+            user: req.body.user,
             email: req.body.email,
             senha: req.body.senha,
         })
