@@ -177,13 +177,11 @@ app.post("/user", async (req , res) => {
             email: req.body.email,
             senha: req.body.senha,
         })
-
-       await user.save()
        return res.send(user)
 });
 
-app.post("/user/:id", async (req , res) => {
-    const user = new User({
+app.put("/user/:id", async (req , res) => {
+    const user = new User.findByIdAndUpdate(req.params.id , {
         cart: req.body.cart
     })
 
