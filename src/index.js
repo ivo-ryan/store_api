@@ -182,7 +182,7 @@ app.post("/user", async (req , res) => {
 });
 
 app.put("/user/:id", async (req , res) => {
-    const user = new User.findByIdAndUpdate(req.params.id , {
+    const user = await User.findByIdAndUpdate(req.params.id , {
         cart: req.body.cart
     })
 
