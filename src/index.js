@@ -177,6 +177,7 @@ app.post("/user", async (req , res) => {
             email: req.body.email,
             senha: req.body.senha,
         })
+        await user.save()
        return res.send(user)
 });
 
@@ -185,7 +186,6 @@ app.put("/user/:id", async (req , res) => {
         cart: req.body.cart
     })
 
-   await user.save()
    return res.send(user)
 });
 
