@@ -26,6 +26,10 @@ const User = mongoose.model('User', {
     cart:[]
 });
 
+const Cart = mongoose.madel('Cart', {
+    cart: []
+})
+
 const Moda = mongoose.model('Moda', {
     name: String,
     description: String,
@@ -182,8 +186,8 @@ app.post("/user", async (req , res) => {
 });
 
 app.post("/user/:id", async (req , res) => {
-    const user = await User.findById(req.params.id , {
-        cart: req.body,
+    const user = await Cart.findById(req.params.id , {
+        cart: req.body.cart,
     })
     await user.save()
     return res.send(user)
