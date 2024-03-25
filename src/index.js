@@ -181,10 +181,11 @@ app.post("/user", async (req , res) => {
        return res.send(user)
 });
 
-app.put("/user/:id", async (req , res) => {
-    const user = await User.findByIdAndUpdate(req.params.id , {
+app.post("/user/:id", async (req , res) => {
+    const user = await User.findById(req.params.id , {
         cart: req.body.cart,
     })
+    await user.save()
     return res.send(user)
 });
 
