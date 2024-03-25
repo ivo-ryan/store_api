@@ -183,7 +183,7 @@ app.post("/user", async (req , res) => {
 
 app.post("/user/:id", async (req , res) => {
     const user = await User.findById(req.params.id , {
-        cart: req.body.cart,
+        cart: req.body,
     })
     await user.save()
     return res.send(user)
