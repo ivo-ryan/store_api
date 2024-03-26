@@ -23,6 +23,7 @@ const User = mongoose.model('User', {
     user: String,
     email: String ,
     senha: String ,
+
 });
 
 const Cart = mongoose.model('Cart', {
@@ -188,11 +189,10 @@ app.post("/user", async (req , res) => {
        return res.send(user)
 });
 
-app.post("/user/:id", async (req , res) => {
-    const user = await Cart.findById(req.params.id , {
+app.put("/user/:id", async (req , res) => {
+    const user = await Cart.findByIdAndUpdate(req.params.id , {
         cart: req.body.cart,
     })
-    await user.save()
     return res.send(user)
 });
 
