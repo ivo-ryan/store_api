@@ -19,11 +19,22 @@ app.use((req, res, next) => {
 
 const port = process.env.PORT || 3000;
 
+const Cart = mongoose.model('Cart', [
+        {
+            id: String,
+            description: String,
+            name: String,
+            image: String,
+            marca: String,
+            price: String
+        }
+])
+
 const User = mongoose.model('User', {
     user: String,
     email: String ,
     senha: String ,
-    cart:[]
+    cart: Cart
 });
 
 const Moda = mongoose.model('Moda', {
@@ -182,8 +193,8 @@ app.post("/user", async (req , res) => {
 });
 
 app.post("/user/:id", async (req , res) => {
-    const user = await User.findById(req.params.id , {
-        cart: req.body.cart.push(req.body)
+    const user = await Cart.findById(req.params.id , {
+        cart: req.body.cart
     })
     await user.save()
     return res.send(user)
