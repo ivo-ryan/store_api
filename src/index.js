@@ -20,19 +20,14 @@ app.use((req, res, next) => {
 const port = process.env.PORT || 3000;
 
 const Cart = mongoose.model('Cart', {
-            id: String,
-            description: String,
-            name: String,
-            image: String,
-            marca: String,
-            price: String
+            
         })
 
 const User = mongoose.model('User', {
     user: String,
     email: String ,
     senha: String ,
-    cart: [Cart]
+    cart: Cart
 });
 
 const Moda = mongoose.model('Moda', {
