@@ -23,16 +23,8 @@ const User = mongoose.model('User', {
     user: String,
     email: String ,
     senha: String ,
-
+    cart:[]
 });
-
-const Cart = mongoose.model('Cart', {
-    name: String,
-    description: String,
-    price: String,
-    marca: String,
-    image: String
-})
 
 const Moda = mongoose.model('Moda', {
     name: String,
@@ -190,7 +182,7 @@ app.post("/user", async (req , res) => {
 });
 
 app.put("/user/:id", async (req , res) => {
-    const user = await Cart.findByIdAndUpdate(req.params.id , {
+    const user = await User.findByIdAndUpdate(req.params.id , {
         cart: req.body.cart,
     })
     return res.send(user)
